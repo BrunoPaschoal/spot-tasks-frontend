@@ -1,6 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-export default {    
-
+export default {
     colors: {
         background: '#050710',
         foreground: '#1E2028',

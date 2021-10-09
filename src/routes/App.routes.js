@@ -13,7 +13,7 @@ import { Pomodoro } from '../views/pomodore';
 
 export const AppRoutes = ()=>{ 
 
-    const isAuth = useSelector(state => state.authReducer.authentication.isAuth)
+    const isAuth = useSelector(state => state.authReducer.isAuth)
 
     return ( 
         <Switch>

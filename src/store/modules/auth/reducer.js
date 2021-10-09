@@ -1,31 +1,44 @@
-import {LOGIN, LOGOUT} from '../types';
+import {LOGIN_SUCCESS, LOGIN_REQUEST, LOGIN_FAILURE, LOGOUT} from '../types';
+
 const initialState = {    
-    authentication: {
-        isAuth: false
-    },
+    isAuth: false,
+    token: false,    
     user: {},
+    isLoading: false,
 }
 
  const authReducer = (state = initialState, action) => {
      switch(action.type){
-         case LOGIN:{
+         case LOGIN_SUCCESS:{            
              return {
                  ...state,
-                 authentication: {
-                    isAuth: true
-                },
-                 user: {...action.payload}
+                 isAuth: true,
+                 token: action.payload.token,
+                 user: action.payload.user,
+                 isLoading: false
              }
          }
 
-         case LOGOUT:{
+         case LOGIN_REQUEST:{
             return {
                 ...state,
-                authentication: {
-                   isAuth: false
-               },
-                user: {}
+                isLoading: true
             }
+        }
+
+        case LOGIN_FAILURE:{
+            return {
+                ...state,
+                isAuth: false,
+                token: false,    
+                user: {},
+                isLoading: false,
+            }
+        }
+
+        //logout
+         case LOGOUT:{
+            return initialState;
         }
 
          default: {

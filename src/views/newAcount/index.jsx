@@ -5,6 +5,7 @@ import {Container, ContentContainer, LoginContainer } from './styles';
 import Lottie from 'react-lottie';
 import { useHistory } from 'react-router-dom';
 import {IoArrowUndoSharp} from 'react-icons/io5';
+import { useToast } from "@chakra-ui/react";
 
 //components
 import {HeaderLogin} from '../../components/headerLogin';
@@ -20,16 +21,26 @@ function NewAcount () {
     const [modalIsOpen, setModalisOpen] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
+    const toast = useToast()
+
+    const validationToastMessagem = (message) => {
+        toast({
+            title: "Ops!",
+            description: message,
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+        })
+    }
+
     const history = useHistory()   
 
     //MODAL CONTROL
     function handleCloseModal(){
-        setModalisOpen(false)
-    }
+        setModalisOpen(false)    }
 
     function handleOpenModal(){
-        setModalisOpen(true)
-    }
+        setModalisOpen(true)    }
     
     async function handleSubmit() {
         setIsLoading(true)
@@ -43,7 +54,12 @@ function NewAcount () {
             handleOpenModal()
         }).catch((err)=>{
             setIsLoading(false)
-            alert(err)       
+            const errorMessage = err.response.data.message;
+            if (errorMessage === 'User already exists') {
+                validationToastMessagem("Esse e-mail já existe!")
+            }else{
+                validationToastMessagem("Parece que ocorreu um problema. Tente novamente mais tarde!")
+            }    
         })
     }
 
@@ -51,54 +67,54 @@ function NewAcount () {
         <Container>
             <HeaderLogin/>
             <ContentContainer>               
-                    <LoginContainer as={motion.div}
-                        initial={{opacity: 0, y: -150}}
-                        animate={{opacity: 1, y: -0}}
-                        transition={{duration: 1.0, delay: 0.3}}                    
-                    >
+                <LoginContainer as={motion.div}
+                    initial={{opacity: 0, y: -150}}
+                    animate={{opacity: 1, y: -0}}
+                    transition={{duration: 1.0, delay: 0.3}}                    
+                >
 
-                        <div className='back-button' onClick={() => history.push('/')}>
-                            <IoArrowUndoSharp/>
-                        </div>
-                        <h2>Cadastre-se</h2>
-                        <input
-                            type="text"
-                            placeholder='Nome'
-                            onChange={event => setName(event.target.value)}
-                            value={name}
-                        />
+                    <div className='back-button' onClick={() => history.push('/')}>
+                        <IoArrowUndoSharp/>
+                    </div>
+                    <h2>Cadastre-se</h2>
+                    <input
+                        type="text"
+                        placeholder='Nome'
+                        onChange={event => setName(event.target.value)}
+                        value={name}
+                    />
 
-                        <input
-                            type="text"
-                            placeholder='E-mail'
-                            onChange={event => setEmail(event.target.value)}
-                            value={email}
-                        />
+                    <input
+                        type="text"
+                        placeholder='E-mail'
+                        onChange={event => setEmail(event.target.value)}
+                        value={email}
+                    />
 
-                        <input
-                            type="password"
-                            placeholder='Senha'
-                            onChange={event => setPassword(event.target.value)}
-                            value={password}
-                        />
+                    <input
+                        type="password"
+                        placeholder='Senha'
+                        onChange={event => setPassword(event.target.value)}
+                        value={password}
+                    />
 
-                        <button onClick={() => handleSubmit()}>
-                        {
-                            isLoading ? (
-                                <Lottie width={45} height={45}
-                                    options={{
-                                        animationData: loading,
-                                        rendererSettings: {
-                                            preserveAspectRatio: 'xMidYMid slice'
-                                        }                                 
-                                    }}
-                                />
-                            ) : (
-                                'CADASTRAR'
-                            )
-                        }
-                        </button>  
-                    </LoginContainer>               
+                    <button onClick={() => handleSubmit()}>
+                    {
+                        isLoading ? (
+                            <Lottie width={45} height={45}
+                                options={{
+                                    animationData: loading,
+                                    rendererSettings: {
+                                        preserveAspectRatio: 'xMidYMid slice'
+                                    }                                 
+                                }}
+                            />
+                        ) : (
+                            'CADASTRAR'
+                        )
+                    }
+                    </button>  
+                </LoginContainer>               
             </ContentContainer> 
 
             {/*REACT MODAL*/} 
