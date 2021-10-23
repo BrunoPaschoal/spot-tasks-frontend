@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     background-color: ${props => props.theme.colors.foreground};
-    height: 65px;
+    height: 55px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -11,33 +11,35 @@ export const Container = styled.div`
     padding: 0 35px 0 35px;
 
     .menu-icon{
-        color:${props => props.theme.colors.white};
-        font-size: 30px;
+        color:${props => props.theme.colors.textStrong};
+        font-size: 28px;
         display: flex;
         justify-content: center;
         cursor: pointer;
     }
 
-    .profile-container{
+    .buttons-container{
         display: flex;
         align-items: center;
-        
-        span{
-            color:${props => props.theme.colors.white};
-            margin-right: 12px;
-            font-size: 16px;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 500;
-        }
+        font-size: 12px;
+        font-weight: 500;
+        color: ${props => props.theme.colors.textStrong};
+        justify-content: space-between;
+        width: 210px;
 
-        .pick-profile{
-            width: 45px;
-            height: 45px;
-            border-radius: 100%;
-            border: solid 2px ${props => props.theme.colors.primary};
-            cursor: pointer;
-        }
-    }    
+
+        button{
+            background-color: ${props => props.theme.colors.background};
+            padding: 5px;
+            border-radius: 3px;
+            width: 100px;
+
+            &:active{
+                opacity: 0.7;
+            }
+        }     
+    } 
+
 `;
 
 

@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {Background, Container, TitleContainer, TaskListContainer} from './styles';
 import { Header } from '../../components/header';
 import { TaskItem } from '../../components/taskItem';
-import {BiListPlus} from 'react-icons/bi';
 import {AddTask} from '../../components/addTask';
 import { useSelector } from 'react-redux';
 import { useToast } from "@chakra-ui/react";
+import {ResumeTaskCards} from '../../components/resumeTaskCards';
+import {GenericTitle} from '../../components/genericTitle';
 
 //API CALLS
 import {addNewTask, getTasksByUserid } from '../../services/taskCalls';
@@ -15,8 +16,7 @@ function Home () {
     const [isNewTaskLoading, setIsNewTaskLoading] = useState(false);
     const [tasks, setTasks] = useState([])
 
-    const toast = useToast();
-    
+    const toast = useToast();    
     const userId = useSelector(state => state.authReducer.user._id)
 
     useEffect(()=>{
@@ -56,6 +56,20 @@ function Home () {
             setTasks(response.reverse())
         })        
     }
+    
+    //Amount Tasks Control
+    let amountToDo = 0
+    let amountDone = 0
+    let amountAllTasks = tasks.length
+    for (let index = 0; index < tasks.length; index++) {
+        const element = tasks[index];
+        if (!element.isDone) {
+            amountToDo = amountToDo + 1
+        }        
+        if (element.isDone) {
+            amountDone = amountDone + 1
+        }        
+    }
 
     return(
         <>
@@ -63,22 +77,24 @@ function Home () {
             <Background>
                 <Container>
                     <TitleContainer>
-                        <div className='icon-task-title-container'>
-                            <BiListPlus/>
-                        </div>
-                        <h2>Tasks</h2>
+                        <GenericTitle title="TASKS" size="big"/>
                     </TitleContainer>
+                    <ResumeTaskCards
+                        total={amountAllTasks}
+                        toDo={amountToDo}
+                        Done={amountDone}
+                    />
 
-                        <AddTask
-                            setTaskDescription={setTaskDescription}
-                            handleAddnewTask={handleAddnewTask}
-                            taskDescription={taskDescription}
-                            isNewTaskLoading={isNewTaskLoading}
-                        />
+                    <AddTask
+                        setTaskDescription={setTaskDescription}
+                        handleAddnewTask={handleAddnewTask}
+                        taskDescription={taskDescription}
+                        isNewTaskLoading={isNewTaskLoading}
+                    />
                     
                     {/*TASKS TO DO */}
                     <TaskListContainer>
-                        <h3>Tasks</h3>
+                        <GenericTitle title="TASKS" size="small"/>                  
 
                         {
                             tasks.map((task, index) => (                                                         
@@ -88,7 +104,7 @@ function Home () {
                                         taskId={task._id}
                                         taskDescription={task.description}
                                         isComplete={task.isDone}
-                                        getTask={getTask}
+                                        getTask={getTask}                            
                                     />
                                 ) : null
                             ))                           
@@ -98,16 +114,16 @@ function Home () {
 
                     {/*TASKS DONE*/}
                     <TaskListContainer>
-                    <h3>Completas</h3>
+                    <GenericTitle title="COMPLETAS" size="small"/>
                     {
-                        tasks.map((task, index) => (                                
+                        tasks.map((task, index) => (                                                         
                             task?.isDone ? (
                                 <TaskItem
                                     key={index}
                                     taskId={task._id}
                                     taskDescription={task.description}
                                     isComplete={task.isDone}
-                                    getTask={getTask}
+                                    getTask={getTask}                                   
                                 />
                             ) : null
                         ))                           

@@ -7,7 +7,7 @@ import Lottie from 'react-lottie';
 //assets
 import astronaut from '../../../assets/lootties/astronaut.json';
 
-Modal.setAppElement('#root');
+//Modal.setAppElement('#root');
 
 export function SignUpModalContent ({modalIsOpen, handleCloseModal}){
 
@@ -15,40 +15,41 @@ export function SignUpModalContent ({modalIsOpen, handleCloseModal}){
 
     return(
         <Modal            
-                isOpen={modalIsOpen}
-                onRequestClose={handleCloseModal}
-                className='react-modal-content'
-                style={{
-                    overlay:{
-                        position: 'fixed',
-                        backgroundColor: 'rgba(0, 0, 0, 0.50)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center' 
-                    },                    
-                }}
-            >            
+            isOpen={modalIsOpen}
+            onRequestClose={handleCloseModal}
+            className='react-modal-content'
+            style={{
+                overlay:{
+                    position: 'fixed',
+                    backgroundColor: 'rgba(0, 0, 0, 0.15)',
+                    backdropFilter: 'blur(7px)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center' 
+                },                    
+            }}
+        >         
                 
-                <Container>
-                    <Lottie width={350} height={350}
-                        options={{
-                            animationData: astronaut,
-                            rendererSettings: {
-                                preserveAspectRatio: 'xMidYMid slice'
-                            }                                 
-                        }}
-                    />
-                    <TextContainer>
-                        <h2>LEGAL! <span>Cadastro realizado com sucesso</span></h2>                
-                    </TextContainer>
+            <Container>
+                <Lottie width={350} height={350}
+                    options={{
+                        animationData: astronaut,
+                        rendererSettings: {
+                            preserveAspectRatio: 'xMidYMid slice'
+                        }                                 
+                    }}
+                />
+                <TextContainer>
+                    <h2>LEGAL! <span>Cadastro realizado com sucesso</span></h2>                
+                </TextContainer>
 
 
-                    <GotToLoginButton
-                        onClick={() => history.push('/')}
-                    >
-                        LOGIN
-                    </GotToLoginButton>         
-                </Container>        
+                <GotToLoginButton
+                    onClick={() => history.push('/')}
+                >
+                    LOGIN
+                </GotToLoginButton>         
+            </Container>
         </Modal>     
     )
 }

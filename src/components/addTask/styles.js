@@ -2,10 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     padding: 8px;
-    border-radius: 15px;
-    border: solid 2.7px ${props => props.theme.colors.foreground};
+    border-radius: 4px;
     display: flex;
     align-items: center;
+    background: ${props => props.theme.colors.white};
+
+    .list-icon{
+        font-size: 28px;
+        margin-left: 3px;
+    }
 
     .input-container{
         flex: 1;
@@ -15,38 +20,42 @@ export const Container = styled.div`
     input{
         width: 100%;
         background-color: transparent;
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.textStrong};
         font-family: 'Roboto', sans-serif;
-        font-weight: 300;
+        font-weight: 500;
         font-size: 14px;
 
         &::placeholder{
             font-family: 'Roboto', sans-serif;
-            font-weight: 500;
+            font-weight: 400;
+            color: ${props => props.theme.colors.placeholder};
         }
     }
 
     .add-task-icon{
         width: 25px;
         height: 25px;
-        border-radius: 8px;
-        background: linear-gradient(90deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
-        color: ${props => props.theme.colors.white};
+        border-radius: 4px;        
+        color: ${props => props.theme.colors.text};
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 20px;
+        font-size: 30px;
         cursor: pointer;
-        transition: transform 250ms ease-in-out;
+        transition: all 250ms ease-in-out;
 
         &:active{
             opacity: 0.7;
         }
         
         &:hover{
-            transform: scale(1.05,1.05);            
+            background: ${props => props.theme.colors.background};
         }
-    }
+    }    
+`;
 
-    
+export const GradientLine = styled.div`
+    height: 2px;
+    background: linear-gradient(90deg, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
+
 `;

@@ -21,7 +21,7 @@ export const LoginContainer = styled.div`
     margin: 0px 20px 0 20px;    
 
     h2{
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.textStrong};
         font-family: 'Roboto', sans-serif;
         font-weight: 700;
         font-size: 40px;
@@ -34,9 +34,9 @@ export const LoginContainer = styled.div`
         margin-bottom: 10px;
         border-radius: 5px;
         background-color: ${props => props.theme.colors.foreground};
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.textStrong};
         padding-left: 15px;
-        font-size: 18px;
+        font-size: 16px;
 
         &::placeholder{
         font-family: 'Roboto', sans-serif;
@@ -58,7 +58,7 @@ export const LoginContainer = styled.div`
         color: ${props => props.theme.colors.white};
         font-size: 18px;
         font-family: 'Roboto', sans-serif;
-        font-weight: 300;
+        font-weight: 500;
         margin-bottom: 10px;
 
         &:active{
@@ -67,7 +67,7 @@ export const LoginContainer = styled.div`
     }
 
     p{
-        color: ${props => props.theme.colors.white};
+        color: ${props => props.theme.colors.textStrong};
         text-align: center;
         font-size: 14px;
         font-family: 'Roboto', sans-serif;

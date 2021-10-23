@@ -33,14 +33,16 @@ function NewAcount () {
         })
     }
 
-    const history = useHistory()   
+    const history = useHistory()
 
     //MODAL CONTROL
     function handleCloseModal(){
-        setModalisOpen(false)    }
+        setModalisOpen(false)
+    }
 
     function handleOpenModal(){
-        setModalisOpen(true)    }
+        setModalisOpen(true)
+    }
     
     async function handleSubmit() {
         setIsLoading(true)

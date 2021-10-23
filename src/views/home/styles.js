@@ -15,34 +15,12 @@ export const Container = styled.div`
 `; 
 
 export const TitleContainer = styled.div`
-    color: ${props => props.theme.colors.white} ;
+    color: ${props => props.theme.colors.textStrong} ;
     display: flex;
     align-items: baseline;
-    margin-bottom: 16px;
-
-    .icon-task-title-container{
-        font-size: 25px;
-        background-color: ${props => props.theme.colors.foreground} ;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 35px;
-        height: 35px;
-        border-radius: 10px;
-        margin-right: 10px;
-    }
-
-    h2{
-        font-size: 30px;
-    }
+    margin-bottom: 2px;
 `;
 
 export const TaskListContainer = styled.div`
-    margin-top: 50px;
-
-    h3{
-        color: ${props => props.theme.colors.white} ;
-        font-size: 15px;
-        margin-bottom: 10px;
-    }
+    margin-top: 16px;
 `;

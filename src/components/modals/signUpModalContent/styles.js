@@ -13,21 +13,21 @@ export const Container = styled.div`
 
 export const TextContainer = styled.div`
     width: 100%;
-    margin: 15px 0 15px 0;
-    font-size: 13px;
+    margin: 10px 0 10px 0;
+    font-size: 18px;
     display: flex;
     justify-content: center;
 
      h2{
-        color: ${props => props.theme.colors.secondary} ;
+        color: ${props => props.theme.colors.primary} ;
         font-family: 'Roboto', sans-serif;
         font-weight: 600;
     }
 
     span{
-        color: ${props => props.theme.colors.white} ;
+        color: ${props => props.theme.colors.textStrong} ;
         font-family: 'Roboto', sans-serif;
-        font-weight: 300;
+        font-weight: 500;
     }
 `
 
@@ -39,8 +39,7 @@ export const GotToLoginButton = styled.button`
     color: ${props => props.theme.colors.white};
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    margin-bottom: 10px;
+    font-weight: 500;
 
     &:active{
     opacity: 0.7;
