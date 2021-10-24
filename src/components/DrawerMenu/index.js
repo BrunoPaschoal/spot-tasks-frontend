@@ -12,7 +12,7 @@ import {
 
 import { MenuList } from './menuList';
 import Logo from '../../assets/logo.svg';
-import Theme from '../../global/theme/dark';
+import Theme from '../../global/theme/light';
 
 export const DrawerMenu = ({btnRef, isOpen, onClose}) => {
     const userName = useSelector(state => state.authReducer.user.name)

@@ -42,6 +42,24 @@ export const HeaderModal = styled.div`
                 opacity: 0.7;
             }
         }
+
+        .delete-alert-task-button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            width: 22px;
+            height: 22px;
+            background-color: ${props => props.theme.colors.orange};
+            color: ${props => props.theme.colors.white} ;
+            border-radius: 100%;
+            margin-right: 5px;
+            cursor: pointer;
+
+            &:active{
+                opacity: 0.7;
+            }
+        }
     
         .close-modal-button{
             width: 22px;
@@ -158,28 +176,39 @@ export const TagSection = styled.div`
         height: 25px;
         border-radius: 100%;
         margin-right: 5px;
-        cursor: pointer;       
+        cursor: pointer;
+        border: 2px;
+        /* border-color: ${props => props.theme.colors.white}; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: ${props => props.theme.colors.white};
+        font-size: 13px;
     }
-    .purple-circle{
-        background-color: ${props => props.theme.colors.primary};
-        border: ridge 2px black;
-        border-spacing: 10px;
+
+    .brown-circle{
+        background-color: ${props => props.theme.colors.brown};
+        /* border-style: ${props => props.tagCode === 1 ? 'solid' : 'node'}; */
 
     }
 
     .orange-circle{
         background-color: ${props => props.theme.colors.orange};
+        /* border-style: ${props => props.tagCode === 2 ? 'solid' : 'none'}; */
     }
 
     .yellow-circle{
         background-color: ${props => props.theme.colors.yellow};
+        /* border-style: ${props => props.tagCode === 3 ? 'solid' : 'none'}; */
     }
 
     .pink-circle{
         background-color: ${props => props.theme.colors.pink};
+        /* border-style: ${props => props.tagCode === 4 ? 'solid' : 'none'}; */
     }
 
     .green-circle{
-        background-color: ${props => props.theme.colors.green};
+        background-color: ${props => props.theme.colors.greenSoft};
+        /* border-style: ${props => props.tagCode === 5 ? 'solid' : 'none'}; */
     }
 `;

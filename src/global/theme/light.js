@@ -24,9 +24,11 @@ export default {
         black: '#000',
         
         //aditional colors
+        brown: '#807676',
         orange: '#FF705B',
-        yellow: '#FEB626',
-        pink: '#DB4C7F',
+        yellow: '#FFC144',
+        pink: '#ED729E',
+        greenSoft: '#60BFB4',
 
         success: '#339761',
         info: '#BF843D',
