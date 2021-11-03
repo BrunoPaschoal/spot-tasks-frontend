@@ -60,6 +60,5 @@ export const MenuListContainer = styled.div`
     .active{
         background-color: ${props => props.theme.colors.primaryOpacity30} !important;
         color: ${props => props.theme.colors.primary};
-    } 
-    
+    }    
 `;

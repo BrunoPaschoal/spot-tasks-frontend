@@ -1,57 +1,57 @@
 import React from 'react';
-import {MenuListContainer} from './styles';
-import {GoTasklist} from 'react-icons/go';
-import {BiLogOut, BiChalkboard} from 'react-icons/bi';
-import {BsFillClockFill} from 'react-icons/bs';
+import { MenuListContainer } from './styles';
+import { GoTasklist } from 'react-icons/go';
+import { BiLogOut, BiChalkboard } from 'react-icons/bi';
+import { BsFillClockFill } from 'react-icons/bs';
 
-import {useDispatch} from 'react-redux';
-import {logout} from '../../store/modules/auth/actions';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/modules/auth/actions';
 import { Link } from 'react-router-dom';
 
-export const MenuList = () =>{
+export const MenuList = () => {
 
     const dispatch = useDispatch()
 
-    function handleLogOut () {
+    function handleLogOut() {
         dispatch(logout())
     }
-    
-    return(
+
+    return (
         <MenuListContainer>
             <ul>
                 <Link to='/'>
-                    <li className={window.location.pathname === '/' ? 'active': null}>
+                    <li className={window.location.pathname === '/' ? 'active' : null}>
                         <div>
-                            <GoTasklist/>
+                            <GoTasklist />
                         </div>
                         <span>Tasks</span>
                     </li>
-                </Link>                                        
+                </Link>
 
-                
+
                 <Link to='/kanban'>
-                    <li className={window.location.pathname === '/kanban' ? 'active': null}>
+                    <li className={window.location.pathname === '/kanban' ? 'active' : null}>
                         <div>
-                            <BiChalkboard/>
+                            <BiChalkboard />
                         </div>
-                        <span>Kanban</span>                    
+                        <span>Kanban</span>
                     </li>
                 </Link>
 
                 <Link to='/pomodoro'>
-                    <li className={window.location.pathname === '/pomodoro' ? 'active': null}>
+                    <li className={window.location.pathname === '/pomodoro' ? 'active' : null}>
                         <div>
-                            <BsFillClockFill/>
+                            <BsFillClockFill />
                         </div>
-                        <span>Pomodoro</span>                 
+                        <span>Pomodoro</span>
                     </li>
                 </Link>
 
-                <li onClick={()=> handleLogOut()}>
+                <li onClick={() => handleLogOut()}>
                     <div>
-                        <BiLogOut/>
+                        <BiLogOut />
                     </div>
-                    <span>Sair</span>                    
+                    <span>Sair</span>
                 </li>
 
             </ul>

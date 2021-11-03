@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, GradientLine} from './styles';
+import { Container, GradientLine } from './styles';
 import {BiRightArrowAlt, BiListPlus} from 'react-icons/bi';
 import Lottie from 'react-lottie';
 

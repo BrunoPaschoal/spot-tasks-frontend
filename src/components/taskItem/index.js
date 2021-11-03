@@ -31,17 +31,16 @@ export const TaskItem = (props) => {
         <>
             <Container
                 as={motion.div}
-                isComplete={props.isComplete}
-                onClick={() => handleOpenModal()}
+                isComplete={props.isComplete}                
                 whileHover={{
-                    scale: 1.01,      
+                    scale: 1.01,  
                 }}
             >
                 <div className={'add-task-icon'} onClick={() => handleChangeTaskStatus()}>                
                     <BiCheck/>                
                 </div>
 
-                <div className='description-container'>
+                <div className='description-container' onClick={() => handleOpenModal()}>
                     <span>{props.taskDescription}</span>
                 </div>  
             </Container>

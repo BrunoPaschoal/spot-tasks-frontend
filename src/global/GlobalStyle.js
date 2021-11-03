@@ -34,5 +34,4 @@ export default createGlobalStyle`
     .ReactModal__Overlay--before-close{
         opacity: 0; 
     }
-
 `;
