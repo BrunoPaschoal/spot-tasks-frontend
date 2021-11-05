@@ -9,13 +9,11 @@ import { logout } from '../../store/modules/auth/actions';
 import { Link } from 'react-router-dom';
 
 export const MenuList = () => {
-
     const dispatch = useDispatch()
 
     function handleLogOut() {
         dispatch(logout())
     }
-
     return (
         <MenuListContainer>
             <ul>
@@ -56,6 +54,5 @@ export const MenuList = () => {
 
             </ul>
         </MenuListContainer>
-
     )
 }

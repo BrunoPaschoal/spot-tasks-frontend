@@ -5,13 +5,24 @@ export const Background = styled.div`
     justify-content: center;
     min-height: 100vh;
     background-color: ${props => props.theme.colors.background};
-    overflow: hidden;
+    overflow: hidden;    
 `;
 
 export const Container = styled.div`
-    width: 800px;
-    padding: 0 25px 0 25px;
-    margin-top: 130px;
+    max-width: 800px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin: 0 15px 0 15px;
+    margin-top: 120px;
+
+    .lottie-container {
+
+    }
+
+    @media (max-width: 400px) {
+        margin-top: 100px;        
+    }  
 `; 
 
 export const TitleContainer = styled.div`
@@ -19,8 +30,18 @@ export const TitleContainer = styled.div`
     display: flex;
     align-items: baseline;
     margin-bottom: 2px;
+    padding: 0 5px 0 5px;
+`;
+
+export const ResumeCardsContainer = styled.div`
+    margin-bottom: 20px;
+`;
+
+export const AddTaskContainer = styled.div`
+    padding: 0 5px 0 5px;
 `;
 
 export const TaskListContainer = styled.div`
-    margin-top: 16px;
+    padding: 0 5px 0 5px;
+    margin-top: 15px;
 `;

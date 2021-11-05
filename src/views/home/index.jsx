@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {Background, Container, TitleContainer, TaskListContainer} from './styles';
+import React, { useState, useEffect } from 'react';
+import { Background, Container, TitleContainer, TaskListContainer, ResumeCardsContainer, AddTaskContainer } from './styles';
 import { Header } from '../../components/header';
-import {AddTask} from '../../components/addTask';
+import { AddTask } from '../../components/addTask';
 import { useSelector } from 'react-redux';
 import { useToast } from "@chakra-ui/react";
-import {ResumeTaskCards} from '../../components/resumeTaskCards';
-import {GenericTitle} from '../../components/genericTitle';
+import { ResumeTaskCardsList } from '../../components/resumeTaskCardsList';
+import { GenericTitle } from '../../components/genericTitle';
 import { TaskList } from '../../components/taskList';
 import { useTasksCount } from '../../hooks/useTasksCount';
 import Lottie from 'react-lottie';
@@ -14,31 +14,31 @@ import Lottie from 'react-lottie';
 import astronautNothingHere from '../../assets/lootties/astronaut-nothing-here.json';
 
 //API CALLS
-import {addNewTask, getTasksByUserid } from '../../services/taskCalls';
+import { addNewTask, getTasksByUserid } from '../../services/taskCalls';
 
-function Home () {
+function Home() {
     const [taskDescription, setTaskDescription] = useState('');
     const [isNewTaskLoading, setIsNewTaskLoading] = useState(false);
     const [tasks, setTasks] = useState([])
     const [isTaskListLoading, setIsTaskListLoading] = useState(false)
 
-    const toast = useToast();    
+    const toast = useToast();
     const userId = useSelector(state => state.authReducer.user._id)
-    const {amountDone, amountToDo, amountAllTasks} = useTasksCount(tasks)
+    const { amountDone, amountToDo, amountAllTasks } = useTasksCount(tasks)
 
     const tasksToDo = tasks.filter((item) => !item.isDone)
     const tasksComplete = tasks.filter((item) => item.isDone)
 
-    useEffect(()=>{
+    useEffect(() => {
         setIsTaskListLoading(true)
-        getTasksByUserid(userId).then((response)=>{
+        getTasksByUserid(userId).then((response) => {
             setTasks(response.reverse())
             setIsTaskListLoading(false)
         }).catch((e) => {
             alert(e)
             setIsTaskListLoading(false)
         })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const validationToastMessagem = (title, message) => {
@@ -51,87 +51,92 @@ function Home () {
         })
     }
 
-    async function handleAddnewTask () {
-        if (taskDescription.length !== 0){
+    async function handleAddnewTask() {
+        if (taskDescription.length !== 0) {
             setIsNewTaskLoading(true)
-            addNewTask(taskDescription, userId).then(()=>{
+            addNewTask(taskDescription, userId).then(() => {
                 setIsNewTaskLoading(false)
                 setTaskDescription('')
                 getTask()
-            }).catch(()=>{
+            }).catch(() => {
                 setIsNewTaskLoading(false)
                 validationToastMessagem(
-                    "Desculpe!",          
+                    "Desculpe!",
                     "Tente novamente mais tarde!"
-                )           
-            })            
+                )
+            })
         }
     }
-    
-    async function getTask(){
-        getTasksByUserid(userId).then((response)=>{
+
+    async function getTask() {
+        getTasksByUserid(userId).then((response) => {
             setTasks(response.reverse())
         })
     }
 
-    return(
+    return (
         <>
-            <Header/>
+            <Header />
             <Background>
                 <Container>
-                    <TitleContainer>
-                        <GenericTitle title="TASKS" size="big"/>
-                    </TitleContainer>
-                    <ResumeTaskCards
-                        total={amountAllTasks}
-                        toDo={amountToDo}
-                        Done={amountDone}
-                    />
 
-                    <AddTask
-                        setTaskDescription={setTaskDescription}
-                        handleAddnewTask={handleAddnewTask}
-                        taskDescription={taskDescription}
-                        isNewTaskLoading={isNewTaskLoading}
-                    />
+                    <TitleContainer>
+                        <GenericTitle title="TASKS" size="big" />
+                    </TitleContainer>
+
+                    <ResumeCardsContainer>
+                        <ResumeTaskCardsList
+                            total={amountAllTasks}
+                            toDo={amountToDo}
+                            done={amountDone}
+                        />
+                    </ResumeCardsContainer>
+
+                    <AddTaskContainer>
+                        <AddTask
+                            setTaskDescription={setTaskDescription}
+                            handleAddnewTask={handleAddnewTask}
+                            taskDescription={taskDescription}
+                            isNewTaskLoading={isNewTaskLoading}
+                        />
+                    </AddTaskContainer>
 
                     {
                         amountAllTasks === 0 ? (
-                            <Lottie width={850} height={350} style={{marginTop: 70}}
-                                options={{
-                                    animationData: astronautNothingHere,
-                                    rendererSettings: {
-                                        preserveAspectRatio: 'xMidYMid slice'
-                                    }                                 
-                                }}
-                            />
+                            <div className='lottie-container'>
+                                <Lottie
+                                    options={{
+                                        animationData: astronautNothingHere,
+                                        rendererSettings: {
+                                            preserveAspectRatio: 'xMidYMid slice'
+                                        }
+                                    }}
+                                />
+                            </div>
+
                         ) : (
                             <>
                                 <TaskListContainer>
-                                    <GenericTitle title="TASKS" size="small"/>
-                                        <TaskList
-                                            isLoading={isTaskListLoading}
-                                            tasks={tasksToDo}
-                                            getTask={getTask}
-                                            taskType='toDo'                       
-                                        />  
+                                    <GenericTitle title="TASKS" size="small" />
+                                    <TaskList
+                                        isLoading={isTaskListLoading}
+                                        tasks={tasksToDo}
+                                        getTask={getTask}
+                                        taskType='toDo'
+                                    />
                                 </TaskListContainer>
                                 <TaskListContainer>
-                                <GenericTitle title="COMPLETAS" size="small"/>
+                                    <GenericTitle title="COMPLETAS" size="small" />
                                     <TaskList
                                         isLoading={isTaskListLoading}
                                         tasks={tasksComplete}
                                         getTask={getTask}
-                                        taskType='done'                
+                                        taskType='done'
                                     />
                                 </TaskListContainer>
                             </>
                         )
-                    }                            
-
-
-                
-
+                    }
                 </Container>
             </Background>
         </>
