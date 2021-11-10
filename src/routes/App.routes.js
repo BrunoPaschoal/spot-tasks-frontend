@@ -10,6 +10,7 @@ import NewAcount from '../views/newAcount';
 import Home from '../views/home';
 import { Kanban } from '../views/kanban';
 import { Pomodoro } from '../views/pomodore';
+import ProjectTasks from '../views/projectTasks';
 
 export const AppRoutes = ()=>{ 
 
@@ -21,7 +22,8 @@ export const AppRoutes = ()=>{
             <Route path="/SignIn" exact component={NewAcount}/>
             <ProtectedRoute path="/" exact component={Home} isAuth={isAuth}/>
             <ProtectedRoute path="/kanban" exact component={Kanban} isAuth={isAuth}/>
-            <ProtectedRoute path="/pomodoro" exact component={Pomodoro} isAuth={isAuth}/>           
+            <ProtectedRoute path="/pomodoro" exact component={Pomodoro} isAuth={isAuth}/>
+            <ProtectedRoute path="/project/:id" exact component={ProjectTasks} isAuth={isAuth}/>
         </Switch>
     );
 }

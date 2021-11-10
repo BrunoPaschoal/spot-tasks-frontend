@@ -1,28 +1,21 @@
 import React from 'react';
 import { MenuListContainer } from './styles';
-import { GoTasklist } from 'react-icons/go';
-import { BiLogOut, BiChalkboard } from 'react-icons/bi';
-import { BsFillClockFill } from 'react-icons/bs';
-
-import { useDispatch } from 'react-redux';
-import { logout } from '../../store/modules/auth/actions';
+import { BiChalkboard } from 'react-icons/bi';
+import { BsFillClockFill, BsFillGearFill } from 'react-icons/bs';
+import { HiHome } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
 export const MenuList = () => {
-    const dispatch = useDispatch()
-
-    function handleLogOut() {
-        dispatch(logout())
-    }
+    
     return (
         <MenuListContainer>
             <ul>
                 <Link to='/'>
                     <li className={window.location.pathname === '/' ? 'active' : null}>
                         <div>
-                            <GoTasklist />
+                            <HiHome />
                         </div>
-                        <span>Tasks</span>
+                        <span>Home</span>
                     </li>
                 </Link>
 
@@ -45,11 +38,11 @@ export const MenuList = () => {
                     </li>
                 </Link>
 
-                <li onClick={() => handleLogOut()}>
+                <li>
                     <div>
-                        <BiLogOut />
+                        <BsFillGearFill />
                     </div>
-                    <span>Sair</span>
+                    <span>Configurações</span>
                 </li>
 
             </ul>

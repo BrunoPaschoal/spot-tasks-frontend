@@ -3,7 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
     background-color: ${props => props.theme.colors.background};
     border-radius: 10px;
-    width: 700px; 
+    display: flex;
+    flex-direction: column;    
+    flex: 1;
+    width: 700px;
     overflow: hidden;
 `;
 
@@ -76,6 +79,9 @@ export const HeaderModal = styled.div`
 `;
 
 export const BodyModal = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     padding: 5px 20px 20px 20px;     
 
     h3{

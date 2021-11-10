@@ -5,7 +5,7 @@ import {FaDotCircle} from 'react-icons/fa';
 import {SiCoderwall} from 'react-icons/si';
 
 export function ResumeTaskCardItem ({amount, type, iconsSize, bg, iconColor}) {
-    console.log(iconColor);
+
 
     if (type === 'total') {
         return(

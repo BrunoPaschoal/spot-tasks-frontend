@@ -21,7 +21,7 @@ export const TaskList = ({tasks, isLoading, getTask, taskType}) => {
                     taskId={task._id}
                     taskDescription={task.description}
                     isComplete={task.isDone}
-                    getTask={getTask}                            
+                    getTask={getTask}                        
                 />                
             ))
         )   

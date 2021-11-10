@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Container } from './styles';
-import { motion } from 'framer-motion';
 import { BiCheck } from 'react-icons/bi';
 import { TaskDetailsModal } from '../modals/taskDetailsModal';
 
@@ -29,13 +28,7 @@ export const TaskItem = (props) => {
 
     return (
         <>
-            <Container
-                as={motion.div}
-                isComplete={props.isComplete}
-                whileHover={{
-                    scale: 1.01,
-                }}
-            >
+            <Container isComplete={props.isComplete}>
                 <div className={'add-task-icon'} onClick={() => handleChangeTaskStatus()}>
                     <BiCheck />
                 </div>

@@ -16,6 +16,10 @@ export const Container = styled.div`
         display: flex;
         justify-content: center;
         cursor: pointer;
+
+        &:active{
+            opacity: 0.7;
+        }
     }
 
     .buttons-container{
@@ -27,12 +31,12 @@ export const Container = styled.div`
         justify-content: space-between;
         width: 210px;
 
-
         button{
             background-color: ${props => props.theme.colors.background};
             padding: 5px;
             border-radius: 3px;
             width: 100px;
+            font-weight: 500;
 
             &:active{
                 opacity: 0.7;

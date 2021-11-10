@@ -15,17 +15,17 @@ export async function updateTaskDataById(taskId, payload){
     await axios.put(`/task/${taskId}`, payload)
 }
 
-export async function addNewTask (taskDescription, userId) {
+export async function addNewTask (taskDescription, projectId) {
     await axios.post(`/task`, {            
         description: taskDescription,
         createdAt: new Date(),
-        userId: userId,
+        projectId: projectId,
         isDone: false            
     })
 }
 
-export async function getTasksByUserid(userId){
-    const response = await axios.get(`/task/${userId}`)     
+export async function getTasksByProjectId(projectId){
+    const response = await axios.get(`/task/${projectId}`)     
     return response.data;
 }
 

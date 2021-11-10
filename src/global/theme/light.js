@@ -7,6 +7,7 @@ export default {
 
         primary: '#5B43EA',
         primaryOpacity30: 'rgba(91, 67, 234, 0.3)',
+        primaryOpacity20: 'rgba(91, 67, 234, 0.2)',
         secondary: '#4CC5F9',
         secondaryOpacity30: 'rgba(76, 197, 249, 0.3)',
 

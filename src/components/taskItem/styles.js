@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-
     width: 100%;
     padding: 0 15px 0 15px;
     border-radius: 5px;
@@ -10,6 +9,7 @@ export const Container = styled.div`
     align-items: center;
     margin: 5px 0 5px 0;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
 
     span{
         color: ${props => props.theme.colors.textStrong};
@@ -43,4 +43,10 @@ export const Container = styled.div`
         background-color: ${props => props.isComplete? props.theme.colors.textStrong : props.theme.colors.placeholder};
 
     }
+
+    &:hover {
+        transform: scale(1.01);
+        box-shadow: 2px 5px 15px -1px rgba(0,0,0,0.2);
+    }   
+
 `;
